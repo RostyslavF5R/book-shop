@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -23,7 +22,7 @@ public class Author {
     @Column(name = "name")
     private String authorName;
     @Column(name = "date")
-    private String birthDate; // тут повинно бути localDateTime
+    private String birthDate;
     private String phone;
     private String email;
 }

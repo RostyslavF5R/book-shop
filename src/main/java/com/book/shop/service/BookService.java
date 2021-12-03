@@ -15,5 +15,14 @@ public interface BookService {
 
     List<Book> getAllBooksByAuthorName(String authorName);
 
-    Book getMostSellingBook(String authorName);
+    Book getMostSellingBookByAuthorName(String authorName);
+
+    Book getMostPublishedBookByAuthorName(String authorName);
+
+    List<Book> getMostSellingBooks(String partName);
+
+    List<Book> getMostPublishedBooks(String partName);
+
+    List<Book> getMostSuccessfulBooks(String partName);
+
 }
