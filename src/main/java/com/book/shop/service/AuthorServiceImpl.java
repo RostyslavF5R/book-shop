@@ -43,7 +43,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<Author> getMostSuccessfulAuthor() {
+    public Author getMostSuccessfulAuthor() {
         return authorRepository.findMostSuccessfulAuthor();
     }
 }

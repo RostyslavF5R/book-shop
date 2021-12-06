@@ -12,5 +12,5 @@ public interface AuthorService {
 
     void delete(Long id);
 
-    List<Author> getMostSuccessfulAuthor();
+    Author getMostSuccessfulAuthor();
 }

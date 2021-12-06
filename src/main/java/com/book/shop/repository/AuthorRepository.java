@@ -14,5 +14,5 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
             + "FROM authors a JOIN books b on a.id = b.author_id GROUP BY a.name "
             + "ORDER BY SUM(b.sold_amount / b.published_amount) / COUNT(*) DESC LIMIT 1",
             nativeQuery = true)
-    List<Author> findMostSuccessfulAuthor();
+    Author findMostSuccessfulAuthor();
 }

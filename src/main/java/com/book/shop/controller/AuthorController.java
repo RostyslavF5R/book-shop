@@ -36,10 +36,10 @@ public class AuthorController {
     }
 
     @GetMapping("/most-successful-author")
-    public List<AuthorDto> getMost() {
-        return authorService.getMostSuccessfulAuthor().stream()
-                .map(author -> modelMapper.map(author, AuthorDto.class))
-                .collect(Collectors.toList());
+    public ResponseEntity<AuthorDto> getMost() {
+        Author author = authorService.getMostSuccessfulAuthor();
+        AuthorDto authorResponse = modelMapper.map(author, AuthorDto.class);
+        return ResponseEntity.ok().body(authorResponse);
     }
 
     @PostMapping
