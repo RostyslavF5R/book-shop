@@ -1,7 +1,6 @@
 package com.book.shop.service;
 
 import com.book.shop.model.Book;
-
 import java.util.List;
 
 public interface BookService {
@@ -15,9 +14,9 @@ public interface BookService {
 
     List<Book> getAllBooksByAuthorName(String authorName);
 
-    Book getMostSellingBookByAuthorName(String authorName);
+    List<Book> getMostSellingBookByAuthorName(String authorName);
 
-    Book getMostPublishedBookByAuthorName(String authorName);
+    List<Book> getMostPublishedBookByAuthorName(String authorName);
 
     List<Book> getMostSellingBooks(String partName);
 

@@ -41,4 +41,9 @@ public class AuthorServiceImpl implements AuthorService {
                 .orElseThrow(() -> new ResourceNotFoundException("Cannot find author"));
         authorRepository.delete(exitingAuthor);
     }
+
+    @Override
+    public List<Author> getMostSuccessfulAuthor() {
+        return authorRepository.findMostSuccessfulAuthor();
+    }
 }

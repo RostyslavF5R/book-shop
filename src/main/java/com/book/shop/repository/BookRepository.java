@@ -15,18 +15,19 @@ public interface BookRepository extends JpaRepository<Book, Long> {
             + "where b.sold_amount = "
             + "(select max(b.sold_amount) from books b join authors a on b.author_id = a.id "
             + "where a.name = ?1)", nativeQuery = true)
-    Book getMostSellingBookByAuthorName(String authorName);
+    List<Book> findMostSellingBookByAuthorName(String authorName);
 
     @Query(value = "select * from books b join authors a on b.author_id = a.id "
             + "where b.published_amount = "
             + "(select max(b.published_amount) from books b join authors a on b.author_id = a.id "
             + "where a.name = ?1)", nativeQuery = true)
-    Book getMostPublishedBookByAuthorName(String authorName);
+    List<Book> findMostPublishedBookByAuthorName(String authorName);
 
     @Query(value = "select * from books b join authors a on b.author_id = a.id "
-            + "where a.name = ?1 and published_amount / b.sold_amount = "
-            + "(select min(published_amount / b.sold_amount) "
+            + "where a.name = ?1 and b.sold_amount / published_amount = "
+            + "(select max(b.sold_amount / b.published_amount) "
             + "from books b join authors a on b.author_id = a.id "
             + "where a.name = ?1)", nativeQuery = true)
     List<Book> findBookByRating(String partName);
+
 }

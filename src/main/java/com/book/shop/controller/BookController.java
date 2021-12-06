@@ -36,23 +36,23 @@ public class BookController {
     }
 
     @GetMapping("/{authorName}")
-    public List<BookDto> getAllBooksByAuthorName(@PathVariable String authorName) {
+    public List<BookDto>  getAllBooksByAuthorName(@PathVariable String authorName) {
         return bookService.getAllBooksByAuthorName(authorName).stream()
                 .map(book -> modelMapper.map(book, BookDto.class))
                 .collect(Collectors.toList());
     }
 
     @GetMapping("/most-selling-book/{authorName}")
-    public ResponseEntity<BookDto> getMostSellingBook(@PathVariable String authorName) {
-        Book book = bookService.getMostSellingBookByAuthorName(authorName);
-        BookDto bookResponse = modelMapper.map(book, BookDto.class);
-        return ResponseEntity.ok().body(bookResponse);
+    public List<BookDto> getMostSellingBook(@PathVariable String authorName) {
+       return bookService.getMostSellingBookByAuthorName(authorName).stream()
+                .map(book -> modelMapper.map(book, BookDto.class))
+                .collect(Collectors.toList());
     }
     @GetMapping("/most-published-book/{authorName}")
-    public ResponseEntity<BookDto> getMostPublishedBook(@PathVariable String authorName) {
-        Book book = bookService.getMostPublishedBookByAuthorName(authorName);
-        BookDto bookResponse = modelMapper.map(book, BookDto.class);
-        return ResponseEntity.ok().body(bookResponse);
+    public List<BookDto> getMostPublishedBook(@PathVariable String authorName) {
+        return bookService.getMostPublishedBookByAuthorName(authorName).stream()
+                .map(book -> modelMapper.map(book, BookDto.class))
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/most-selling-books/{partName}")

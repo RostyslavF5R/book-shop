@@ -53,13 +53,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getMostSellingBookByAuthorName(String authorName) {
-        return bookRepository.getMostSellingBookByAuthorName(authorName);
+    public List<Book> getMostSellingBookByAuthorName(String authorName) {
+        return bookRepository.findMostSellingBookByAuthorName(authorName);
     }
 
     @Override
-    public Book getMostPublishedBookByAuthorName(String authorName) {
-        return bookRepository.getMostPublishedBookByAuthorName(authorName);
+    public List<Book> getMostPublishedBookByAuthorName(String authorName) {
+        return bookRepository.findMostPublishedBookByAuthorName(authorName);
     }
 
     @Override
@@ -67,8 +67,9 @@ public class BookServiceImpl implements BookService {
         List<Author> authors = authorRepository.findAuthors(partName);
         List<Book> books = new ArrayList<>();
         for (Author author : authors) {
-            Book mostSellingBookByAuthorName = bookRepository.getMostSellingBookByAuthorName(author.getAuthorName());
-            books.add(mostSellingBookByAuthorName);
+            List<Book> mostSellingBookByAuthorName = bookRepository
+                    .findMostSellingBookByAuthorName(author.getAuthorName());
+            books.addAll(mostSellingBookByAuthorName);
         }
         return books;
     }
@@ -78,8 +79,9 @@ public class BookServiceImpl implements BookService {
         List<Author> authors = authorRepository.findAuthors(partName);
         List<Book> books = new ArrayList<>();
         for (Author author : authors) {
-            Book mostSellingBookByAuthorName = bookRepository.getMostPublishedBookByAuthorName(author.getAuthorName());
-            books.add(mostSellingBookByAuthorName);
+            List<Book> mostSellingBookByAuthorName = bookRepository
+                    .findMostPublishedBookByAuthorName(author.getAuthorName());
+            books.addAll(mostSellingBookByAuthorName);
         }
         return books;
     }
