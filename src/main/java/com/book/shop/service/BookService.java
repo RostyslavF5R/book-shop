@@ -23,5 +23,4 @@ public interface BookService {
     List<Book> getMostPublishedBooks(String partName);
 
     List<Book> getMostSuccessfulBooks(String partName);
-
 }

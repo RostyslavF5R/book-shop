@@ -29,5 +29,4 @@ public interface BookRepository extends JpaRepository<Book, Long> {
             + "from books b join authors a on b.author_id = a.id "
             + "where a.name = ?1)", nativeQuery = true)
     List<Book> findBookByRating(String partName);
-
 }
